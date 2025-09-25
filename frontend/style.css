@@ -1,12 +1,9 @@
-/* General body styling */
 body {
   margin: 0;
   font-family: 'Segoe UI', Arial, sans-serif;
   background: linear-gradient(135deg, #4caf50, #81c784);
   height: 100vh;
 }
-
-/* Login box animation */
 .animate {
   animation: slideUp 1s ease;
 }
@@ -14,9 +11,7 @@ body {
   from { transform: translate(-50%, 100%); opacity: 0; }
   to { transform: translate(-50%, -50%); opacity: 1; }
 }
-
-/* Login box container */
-.login-container {
+.login-container, .role-container {
   background: #fff;
   padding: 40px 30px;
   border-radius: 20px;
@@ -28,159 +23,102 @@ body {
   left: 50%;
   transform: translate(-50%, -50%);
 }
-
-/* Error text */
-.error {
-  color: red;
-  font-size: 14px;
-  margin: 5px 0;
+.role-container {
+  padding-top: 50px;
+  gap: 30px;
+  display: flex;
+  flex-direction: column;
 }
-
-/* Input fields */
-.login-container input {
-  width: 90%;
-  margin: 12px auto;
-  padding: 12px 15px;
-  border: 1px solid #ccc;
-  border-radius: 25px;
-  outline: none;
-  font-size: 15px;
-  transition: 0.3s;
-}
-.login-container input:focus {
-  border-color: #43cea2;
-  box-shadow: 0 0 8px rgba(67, 206, 162, 0.6);
-}
-
-/* Button */
-.login-container button {
-  width: 100%;
-  padding: 12px;
-  margin-top: 15px;
+.role-btn {
   background: linear-gradient(to right, #43cea2, #185a9d);
-  border: none;
-  border-radius: 25px;
   color: white;
-  font-size: 16px;
-  font-weight: bold;
+  border: none;
+  padding: 18px;
+  border-radius: 18px;
+  font-size: 18px;
   cursor: pointer;
+  margin: 12px 0;
+  font-weight: bold;
   transition: 0.3s;
 }
-.login-container button:hover {
+.role-btn:hover {
   transform: scale(1.05);
   background: linear-gradient(to right, #185a9d, #43cea2);
 }
-
-/* Dashboard body */
-body.dashboard {
-  display: flex;
-  background: #ecf0f1;
-  height: 100vh;
+.error { color: red; font-size: 14px; margin: 5px 0;}
+.login-container input, .role-container input {
+  width: 90%; margin: 12px auto; padding: 12px 15px; border: 1px solid #ccc;
+  border-radius: 25px; outline: none; font-size: 15px; transition: 0.3s;
 }
-
-/* Sidebar */
+.login-container input:focus, .role-container input:focus {
+  border-color: #43cea2;
+  box-shadow: 0 0 8px rgba(67, 206, 162, 0.6);
+}
+.login-container button {
+  width: 100%; padding: 12px; margin-top: 15px;
+  background: linear-gradient(to right, #43cea2, #185a9d);
+  border: none; border-radius: 25px; color: white;
+  font-size: 16px; font-weight: bold; cursor: pointer; transition: 0.3s;
+}
+.login-container button:hover {
+  transform: scale(1.05); background: linear-gradient(to right, #185a9d, #43cea2);
+}
+body.dashboard { display: flex; background: #ecf0f1; height: 100vh; }
 .sidebar {
-  width: 220px;
-  background: #2c3e50;
-  color: white;
-  display: flex;
-  flex-direction: column;
-  padding: 20px;
+  width: 220px; background: #2c3e50; color: white; display: flex;
+  flex-direction: column; padding: 20px;
 }
-.sidebar h2 {
-  text-align: center;
-  margin-bottom: 20px;
-}
+.sidebar h2 { text-align: center; margin-bottom: 20px; }
 .sidebar button {
-  margin: 8px 0;
-  padding: 12px;
-  background: #34495e;
-  border: none;
-  color: white;
-  font-size: 15px;
-  border-radius: 6px;
-  cursor: pointer;
-  transition: 0.3s;
+  margin: 8px 0; padding: 12px; background: #34495e; border: none;
+  color: white; font-size: 15px; border-radius: 6px; cursor: pointer; transition: 0.3s;
 }
 .sidebar button:hover { background: #16a085; }
-
-/* Main content */
 .main {
-  flex-grow: 1;
-  padding: 20px;
-  background: #ecf0f1;
-  display: flex;
-  justify-content: center;
-  align-items: flex-start;
+  flex-grow: 1; padding: 20px; background: #ecf0f1;
+  display: flex; justify-content: center; align-items: flex-start;
   min-height: 100vh;
 }
-
 .content-box {
-  width: 80%;
-  min-height: 70%;
-  background: white;
-  border-radius: 15px;
-  padding: 20px;
-  box-shadow: 0 8px 25px rgba(0,0,0,0.2);
+  width: 80%; min-height: 70%; background: white; border-radius: 15px;
+  padding: 20px; box-shadow: 0 8px 25px rgba(0,0,0,0.2);
 }
-
-/* Chat UI */
-.chat-container {
-  display: flex;
-  flex-direction: column;
-  height: 550px;
-}
+.chat-container { display: flex; flex-direction: column; height: 550px; }
 .chat-header {
-  background: #16a085;
-  color: white;
-  padding: 12px;
+  background: #16a085; color: white; padding: 12px;
   border-radius: 10px 10px 0 0;
-  font-weight: bold;
-  display: flex;
-  justify-content: space-between;
+  font-weight: bold; display: flex; justify-content: space-between;
   align-items: center;
 }
 .chat-messages {
-  flex-grow: 1;
-  padding: 10px;
-  overflow-y: auto;
-  border: 1px solid #ddd;
-  margin-bottom: 10px;
+  flex-grow: 1; padding: 10px; overflow-y: auto;
+  border: 1px solid #ddd; margin-bottom: 10px;
 }
-.chat-input {
-  display: flex;
-  margin-top: auto;
-  gap: 5px;
-}
+.chat-input { display: flex; margin-top: auto; gap: 5px; }
 .chat-input input {
-  flex: 1;
-  padding: 10px;
-  border: 1px solid #ccc;
-  border-radius: 20px;
-  outline: none;
+  flex: 1; padding: 10px; border: 1px solid #ccc;
+  border-radius: 20px; outline: none;
 }
 .chat-input button {
-  padding: 10px 15px;
-  border: none;
-  border-radius: 20px;
-  background: #16a085;
-  color: white;
-  cursor: pointer;
-  font-size: 18px;
+  padding: 10px 15px; border: none; border-radius: 20px;
+  background: #16a085; color: white; cursor: pointer; font-size: 18px;
 }
-#voiceBtn {
-  background: #3498db;
-}
-
-/* Profile circle in chat header */
 .profile-circle {
-  width: 35px;
-  height: 35px;
-  background: #fff;
-  color: #16a085;
-  border-radius: 50%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  font-weight: bold;
+  width: 35px; height: 35px; background: #fff; color: #16a085;
+  border-radius: 50%; display: flex; justify-content: center;
+  align-items: center; font-weight: bold;
 }
+.search-bar {
+  width: 70%; padding: 10px; margin-bottom: 10px;
+  border-radius: 8px; border: 1px solid #ccc;
+  outline: none; font-size: 16px; box-sizing: border-box;
+}
+.search-bar:focus {
+  border-color: #43cea2;
+  box-shadow: 0 0 4px rgba(67, 206, 162, 0.4);
+}
+.search-btn {
+  padding: 10px 15px; margin-left: 8px; border-radius: 8px; border: none;
+  background: #16a085; color: white; font-size: 18px; cursor: pointer;
+}
+.search-btn:hover { background: #3498db; }
