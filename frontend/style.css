@@ -71,13 +71,12 @@ body {
   background: linear-gradient(to right, #185a9d, #43cea2);
 }
 
-/* Override background for dashboard only */
+/* Dashboard body */
 body.dashboard {
   display: flex;
-  background: #ecf0f1; /* same as main content */
-  height: 100vh;       /* make full height */
+  background: #ecf0f1;
+  height: 100vh;
 }
-
 
 /* Sidebar */
 .sidebar {
@@ -88,7 +87,10 @@ body.dashboard {
   flex-direction: column;
   padding: 20px;
 }
-.sidebar h2 { text-align: center; margin-bottom: 20px; }
+.sidebar h2 {
+  text-align: center;
+  margin-bottom: 20px;
+}
 .sidebar button {
   margin: 8px 0;
   padding: 12px;
@@ -110,7 +112,7 @@ body.dashboard {
   display: flex;
   justify-content: center;
   align-items: flex-start;
-  min-height: 100vh; /* fill the vertical space */
+  min-height: 100vh;
 }
 
 .content-box {
@@ -134,18 +136,21 @@ body.dashboard {
   padding: 12px;
   border-radius: 10px 10px 0 0;
   font-weight: bold;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 .chat-messages {
   flex-grow: 1;
   padding: 10px;
   overflow-y: auto;
   border: 1px solid #ddd;
-  margin-bottom: 10px; /* space before input */
+  margin-bottom: 10px;
 }
 .chat-input {
   display: flex;
   margin-top: auto;
-  gap:5px;
+  gap: 5px;
 }
 .chat-input input {
   flex: 1;
@@ -155,7 +160,6 @@ body.dashboard {
   outline: none;
 }
 .chat-input button {
-  margin-left: 10px;
   padding: 10px 15px;
   border: none;
   border-radius: 20px;
@@ -164,12 +168,11 @@ body.dashboard {
   cursor: pointer;
   font-size: 18px;
 }
-
 #voiceBtn {
-  background: #3498db; /* different color for voice button */
+  background: #3498db;
 }
 
-/* Profile circle for chat header */
+/* Profile circle in chat header */
 .profile-circle {
   width: 35px;
   height: 35px;
