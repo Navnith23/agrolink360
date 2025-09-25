@@ -6,6 +6,15 @@ body {
   height: 100vh;
 }
 
+/* Login box animation */
+.animate {
+  animation: slideUp 1s ease;
+}
+@keyframes slideUp {
+  from { transform: translate(-50%, 100%); opacity: 0; }
+  to { transform: translate(-50%, -50%); opacity: 1; }
+}
+
 /* Login box container */
 .login-container {
   background: #fff;
@@ -20,12 +29,11 @@ body {
   transform: translate(-50%, -50%);
 }
 
-/* Login title */
-.login-container h2 {
-  margin-bottom: 25px;
-  color: #2c3e50;
-  font-size: 24px;
-  font-weight: bold;
+/* Error text */
+.error {
+  color: red;
+  font-size: 14px;
+  margin: 5px 0;
 }
 
 /* Input fields */
@@ -39,13 +47,12 @@ body {
   font-size: 15px;
   transition: 0.3s;
 }
-
 .login-container input:focus {
   border-color: #43cea2;
   box-shadow: 0 0 8px rgba(67, 206, 162, 0.6);
 }
 
-/* Login button */
+/* Button */
 .login-container button {
   width: 100%;
   padding: 12px;
@@ -59,18 +66,18 @@ body {
   cursor: pointer;
   transition: 0.3s;
 }
-
 .login-container button:hover {
   transform: scale(1.05);
   background: linear-gradient(to right, #185a9d, #43cea2);
 }
 
-/* Dashboard */
+/* Override background for dashboard only */
 body.dashboard {
   display: flex;
-  justify-content: flex-start;
-  align-items: stretch;
+  background: #ecf0f1; /* same as main content */
+  height: 100vh;       /* make full height */
 }
+
 
 /* Sidebar */
 .sidebar {
@@ -81,12 +88,7 @@ body.dashboard {
   flex-direction: column;
   padding: 20px;
 }
-
-.sidebar h2 {
-  text-align: center;
-  margin-bottom: 20px;
-}
-
+.sidebar h2 { text-align: center; margin-bottom: 20px; }
 .sidebar button {
   margin: 8px 0;
   padding: 12px;
@@ -98,23 +100,84 @@ body.dashboard {
   cursor: pointer;
   transition: 0.3s;
 }
-
-.sidebar button:hover {
-  background: #16a085;
-}
+.sidebar button:hover { background: #16a085; }
 
 /* Main content */
 .main {
   flex-grow: 1;
   padding: 20px;
   background: #ecf0f1;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  min-height: 100vh; /* fill the vertical space */
 }
 
-.main h2 {
-  margin-top: 0;
-  color: #2c3e50;
+.content-box {
+  width: 80%;
+  min-height: 70%;
+  background: white;
+  border-radius: 15px;
+  padding: 20px;
+  box-shadow: 0 8px 25px rgba(0,0,0,0.2);
 }
 
-.main p {
-  font-size: 16px;
+/* Chat UI */
+.chat-container {
+  display: flex;
+  flex-direction: column;
+  height: 550px;
+}
+.chat-header {
+  background: #16a085;
+  color: white;
+  padding: 12px;
+  border-radius: 10px 10px 0 0;
+  font-weight: bold;
+}
+.chat-messages {
+  flex-grow: 1;
+  padding: 10px;
+  overflow-y: auto;
+  border: 1px solid #ddd;
+  margin-bottom: 10px; /* space before input */
+}
+.chat-input {
+  display: flex;
+  margin-top: auto;
+  gap:5px;
+}
+.chat-input input {
+  flex: 1;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 20px;
+  outline: none;
+}
+.chat-input button {
+  margin-left: 10px;
+  padding: 10px 15px;
+  border: none;
+  border-radius: 20px;
+  background: #16a085;
+  color: white;
+  cursor: pointer;
+  font-size: 18px;
+}
+
+#voiceBtn {
+  background: #3498db; /* different color for voice button */
+}
+
+/* Profile circle for chat header */
+.profile-circle {
+  width: 35px;
+  height: 35px;
+  background: #fff;
+  color: #16a085;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-weight: bold;
 }
