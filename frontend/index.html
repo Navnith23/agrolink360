@@ -2,39 +2,155 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>AgroLink 360</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AgroLink 360° - Connecting Farms to Markets</title>
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <!-- Login Page -->
-  <div id="loginPage" class="login-container animate">
-    <h2>🌿 AgroLink 360</h2>
-    <form id="loginForm">
-      <input type="text" id="username" placeholder="👤 Username" required>
-      <input type="password" id="password" placeholder="🔒 Password" required>
-      <input type="text" id="fullname" placeholder="📛 Full Name" required>
-      <input type="number" id="age" placeholder="🎂 Age" required>
-      <p id="error" class="error"></p>
-      <button type="submit">Login 🚀</button>
-    </form>
-  </div>
+  <!-- Landing Page -->
+  <div id="landingPage" class="landing-page">
+    <nav class="navbar">
+      <div class="nav-container">
+        <div class="logo">🌿 AgroLink 360°</div>
+        <ul class="nav-links">
+          <li><a href="#features">Features</a></li>
+          <li><a href="#about">About</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+        <button class="cta-button" onclick="showLogin()">Get Started</button>
+      </div>
+    </nav>
 
-  <!-- Mode Switch Page -->
-  <div id="roleSelectPage" class="role-container animate" style="display: none;">
-    <h2>Select Mode</h2>
-    <button class="role-btn" onclick="chooseRole('farmer')">🧑‍🌾 Farmer Mode</button>
-    <button class="role-btn" onclick="chooseRole('buyer')">🛒 Buyer Mode</button>
-  </div>
-
-  <!-- Dashboard Page -->
-  <div id="dashboardPage" class="dashboard" style="display: none;">
-    <div class="sidebar" id="sidebar"></div>
-    <div class="main">
-      <div class="content-box">
-        <h2 id="sectionTitle">Welcome to AgroLink 360</h2>
-        <div id="sectionContent">
-          <p>Select an option from the left menu.</p>
+    <section class="hero">
+      <div class="hero-container">
+        <div class="hero-content">
+          <h1>Connecting Farms to Markets</h1>
+          <p class="subtitle">Empowering farmers and buyers with real-time market access, live weather updates, and direct trade connections.</p>
+          <div class="hero-buttons">
+            <button class="btn-primary" onclick="showLogin()">Start Trading</button>
+            <button class="btn-secondary" onclick="scrollToFeatures()">Learn More</button>
+          </div>
         </div>
+        <div class="hero-visual">
+          <div class="feature-grid">
+            <div class="feature-card">
+              <span class="icon">🧑‍🌾</span>
+              <h3>For Farmers</h3>
+              <p>Sell directly, check weather, get market prices</p>
+            </div>
+            <div class="feature-card">
+              <span class="icon">🛒</span>
+              <h3>For Buyers</h3>
+              <p>Source fresh produce directly from farms</p>
+            </div>
+            <div class="feature-card">
+              <span class="icon">💹</span>
+              <h3>Market Insights</h3>
+              <p>Real-time pricing and market trends</p>
+            </div>
+            <div class="feature-card">
+              <span class="icon">🌦️</span>
+              <h3>Live Weather</h3>
+              <p>All Kerala districts covered</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <!-- Login Modal -->
+  <div id="loginModal" class="auth-container hidden">
+    <div class="auth-box">
+      <button class="close-btn" onclick="hideLogin()">&times;</button>
+      <h2>🌿 Welcome Back</h2>
+      <p class="text-muted mb-2">Sign in to access your AgroLink dashboard</p>
+      <form id="loginForm">
+        <div class="form-group">
+          <label for="username">👤 Username</label>
+          <input type="text" id="username" placeholder="Enter your username" required>
+        </div>
+        <div class="form-group">
+          <label for="password">🔒 Password</label>
+          <input type="password" id="password" placeholder="Enter your password" required>
+        </div>
+        <p id="error" class="error"></p>
+        <button type="submit" class="btn-primary" style="width: 100%; margin-top: 1rem;">Sign In</button>
+      </form>
+    </div>
+  </div>
+
+  <!-- Role Selection Modal -->
+  <div id="roleModal" class="auth-container hidden">
+    <div class="auth-box">
+      <h2>Choose Your Mode</h2>
+      <p class="text-muted mb-2">Select how you want to use AgroLink 360°</p>
+      <div class="role-buttons">
+        <button class="role-btn" onclick="chooseRole('farmer')">
+          <span style="font-size: 2rem;">🧑‍🌾</span>
+          <div>
+            <div style="font-size: 1.2rem;">Farmer Mode</div>
+            <div style="font-size: 0.9rem; opacity: 0.8;">Sell products, weather updates, market prices</div>
+          </div>
+        </button>
+        <button class="role-btn buyer" onclick="chooseRole('buyer')">
+          <span style="font-size: 2rem;">🛒</span>
+          <div>
+            <div style="font-size: 1.2rem;">Buyer Mode</div>
+            <div style="font-size: 0.9rem; opacity: 0.8;">Search products, chat with farmers</div>
+          </div>
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Purchase Modal -->
+  <div id="purchaseModal" class="auth-container hidden">
+    <div class="auth-box" style="max-width: 600px;">
+      <button class="close-btn" onclick="closePurchaseModal()">&times;</button>
+      <h2>🛒 Purchase Product</h2>
+      <div id="purchaseContent">
+        <!-- Purchase details will be loaded here -->
+      </div>
+    </div>
+  </div>
+
+  <!-- Success Modal -->
+  <div id="successModal" class="auth-container hidden">
+    <div class="auth-box">
+      <h2>✅ Purchase Successful!</h2>
+      <div id="successContent">
+        <!-- Success message will be loaded here -->
+      </div>
+      <button class="btn-primary" onclick="closeSuccessModal()" style="width: 100%; margin-top: 1rem;">Continue Shopping</button>
+    </div>
+  </div>
+
+  <!-- Notification -->
+  <div id="notification" class="notification hidden">
+    <div class="notification-content">
+      <span id="notificationMessage"></span>
+      <button class="notification-close" onclick="closeNotification()">&times;</button>
+    </div>
+  </div>
+
+  <!-- Dashboard -->
+  <div id="dashboardPage" class="dashboard hidden">
+    <div class="sidebar">
+      <div class="sidebar-header">
+        <h2 id="sidebarTitle">🌿 AgroLink 360°</h2>
+      </div>
+      <div class="sidebar-nav" id="sidebarNav">
+        <!-- Navigation items will be inserted here -->
+      </div>
+    </div>
+    <div class="main-content">
+      <div class="content-header">
+        <h1 id="contentTitle">Welcome to AgroLink 360°</h1>
+        <p id="contentSubtitle" class="text-muted">Select an option from the sidebar to get started</p>
+      </div>
+      <div id="mainContent">
+        <!-- Main content will be loaded here -->
       </div>
     </div>
   </div>
